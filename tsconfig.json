@@ -1,0 +1,12 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "baseUrl": ".",
+    "paths": {
+      "nevula-voice": ["./modules/nevula-voice"]
+    }
+  },
+  "exclude": ["node_modules", "legal-site", "**/*.test.ts", "supabase/functions"]
+}

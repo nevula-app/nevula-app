@@ -1,0 +1,6 @@
+title = "NEVULA public tree"
+
+[allowlist]
+description = "On-device SecureStore names. These are not credentials."
+regexTarget = "secret"
+regexes = ['''nevula\.(privacy\.presence|notification\.badge|p256\.priv\.jwk|msg\.selfwrap|kem768\.(pk|sk\.[ab]))\.v1''']

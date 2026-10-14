@@ -1,0 +1,52 @@
+{
+  "name": "nevula",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "prebuild": "expo prebuild",
+    "release:check": "node scripts/check-release-readiness.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:community": "vitest run --config legal-site/vitest.config.ts"
+  },
+  "dependencies": {
+    "@noble/post-quantum": "^0.7.1",
+    "@supabase/supabase-js": "2.112.4",
+    "expo": "54.0.37",
+    "expo-background-fetch": "~14.0.9",
+    "expo-camera": "~17.0.10",
+    "expo-clipboard": "~8.0.8",
+    "expo-document-picker": "~14.0.8",
+    "expo-file-system": "19.0.24",
+    "expo-image-manipulator": "~14.0.8",
+    "expo-image-picker": "~17.0.11",
+    "expo-notifications": "^0.32.17",
+    "expo-secure-store": "15.0.8",
+    "expo-status-bar": "3.0.9",
+    "expo-task-manager": "~14.0.9",
+    "expo-video": "~3.0.16",
+    "nevula-launcher-icon": "file:modules/nevula-launcher-icon",
+    "nevula-voice": "file:modules/nevula-voice",
+    "openpgp": "6.3.1",
+    "react": "19.1.0",
+    "react-native": "0.81.5",
+    "react-native-gesture-handler": "~2.28.0",
+    "react-native-nitro-modules": "0.37.0",
+    "react-native-qrcode-svg": "6.3.21",
+    "react-native-quick-base64": "3.0.1",
+    "react-native-quick-crypto": "1.1.7",
+    "react-native-svg": "15.12.1",
+    "react-native-url-polyfill": "4.0.0"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.8",
+    "@types/react": "19.1.10",
+    "typescript": "5.9.2",
+    "vitest": "3.2.7"
+  }
+}

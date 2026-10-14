@@ -1,0 +1,26 @@
+node_modules/
+.npm-cache/
+.expo/
+dist/
+web-build/
+/android/
+/ios/
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
+.gradle-user-jdk17/
+modules/nevula-voice/android/build/
+modules/nevula-launcher-icon/android/build/
+supabase/.temp/
+# Firebase client config stays local. Commit google-services.example.json only.
+google-services.json
+*.jks
+*.keystore
+*.p12
+*.pfx
+# Never commit private keys.
+*-firebase-adminsdk*.json
+fcm-service-account.json
+service-account*.json

@@ -1,0 +1,27 @@
+{
+  "cli": {
+    "version": ">= 16.28.0",
+    "appVersionSource": "local"
+  },
+  "build": {
+    "device-test": {
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      }
+    },
+    "closed-test": {
+      "distribution": "store",
+      "android": {
+        "buildType": "app-bundle"
+      }
+    },
+    "production": {
+      "distribution": "store",
+      "autoIncrement": true,
+      "android": {
+        "buildType": "app-bundle"
+      }
+    }
+  }
+}

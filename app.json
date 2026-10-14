@@ -1,0 +1,122 @@
+{
+  "expo": {
+    "name": "NEVULA",
+    "slug": "nevula",
+    "scheme": "nevula",
+    "icon": "./assets/icon.png",
+    "version": "0.1.190",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "package": "com.nevula.app",
+      "versionCode": 190,
+      "softwareKeyboardLayoutMode": "resize",
+      "icon": "./assets/icon.png",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#05070A"
+      },
+      "allowBackup": false,
+      "permissions": [
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.VIBRATE",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.WAKE_LOCK",
+        "android.permission.CAMERA"
+      ],
+      "blockedPermissions": [
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.READ_MEDIA_IMAGES",
+        "android.permission.READ_MEDIA_VIDEO",
+        "android.permission.SYSTEM_ALERT_WINDOW"
+      ],
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "autoVerify": true,
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ],
+          "data": [
+            {
+              "scheme": "https",
+              "host": "nevula.de",
+              "pathPrefix": "/invite"
+            }
+          ]
+        },
+        {
+          "action": "VIEW",
+          "category": [
+            "BROWSABLE",
+            "DEFAULT"
+          ],
+          "data": [
+            {
+              "scheme": "nevula",
+              "host": "invite",
+              "pathPrefix": "/"
+            },
+            {
+              "scheme": "nevula",
+              "host": "invite"
+            }
+          ]
+        }
+      ]
+    },
+    "ios": {
+      "bundleIdentifier": "com.nevula.app"
+    },
+    "plugins": [
+      "./plugins/withReleaseSigning",
+      "./plugins/withSecureWindow",
+      "./plugins/withLauncherIcons",
+      "./plugins/withOrbotQueries",
+      [
+        "expo-camera",
+        {
+          "recordAudioAndroid": true,
+          "cameraPermission": "NEVULA uses the camera only for private photos and videos inside the app.",
+          "microphonePermission": "NEVULA uses the microphone for private in-app videos and disguised voice messages. The original voice recording never leaves this device."
+        }
+      ],
+      [
+        "expo-video",
+        {
+          "supportsBackgroundPlayback": false,
+          "supportsPictureInPicture": false
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "NEVULA imports photos into the private Gallery only after stripping metadata. Nothing is saved back to the phone gallery.",
+          "microphonePermission": "NEVULA uses the microphone for private in-app videos."
+        }
+      ],
+      "expo-document-picker",
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/icon.png",
+          "sounds": []
+        }
+      ],
+      "expo-background-fetch",
+      "expo-task-manager"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "326b7832-b498-48b2-baec-e739f127cb1f"
+      }
+    },
+    "owner": "dennyalexander"
+  }
+}
