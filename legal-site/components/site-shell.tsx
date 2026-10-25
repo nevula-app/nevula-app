@@ -50,14 +50,10 @@ export function BrandCompound({ suffix }: { suffix: string }) {
 export function AuthMistMark() {
   return (
     <div className="authMist" aria-hidden="true">
-      <Image
-        src="/nevula-wortmark-nebel.png"
-        alt=""
-        width={1410}
-        height={374}
-        unoptimized
-        className="authMistImg"
-      />
+      <div className="authMistWordmark">
+        <BrandWord />
+        <span className="authMistSub">PRIVATE MESSENGER</span>
+      </div>
     </div>
   );
 }
@@ -97,16 +93,12 @@ export function BrandHeadliner({
     <section
       className={`productHero brandHero brandHeroHome${compact ? ' brandHeroCompact' : ''}`}
     >
-      <h1 className="brandBanner">
+      <h1 className="brandBanner brandBannerWordmark">
         <span className="brandBannerCrop notranslate" translate="no">
-          <Image
-            src="/nevula-wortmark-nebel.png"
-            alt={title || 'NEVULA'}
-            width={2820}
-            height={748}
-            priority={priority}
-            unoptimized
-          />
+          <span className="authMistWordmark authMistWordmarkHero">
+            <BrandWord />
+            <span className="authMistSub">PRIVATE MESSENGER</span>
+          </span>
         </span>
         {title ? <span className="brandBannerTitle">{title}</span> : null}
       </h1>
@@ -122,7 +114,7 @@ export function SiteShell({ children }: { children: ReactNode }) {
     <div className="site" lang={locale}>
       <header className="topbar">
         <a className="brand notranslate" href="/" translate="no">
-          <Image src="/nevula-icon.png" alt="NEVULA" width={48} height={48} priority />
+          <Image src="/nevula-app-icon.png" alt="NEVULA" width={48} height={48} priority />
           <BrandWord />
         </a>
         <div className="topbarEnd">

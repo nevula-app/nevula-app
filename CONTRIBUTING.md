@@ -5,7 +5,7 @@ Danke für Verbesserungen an NEVULA. Dieses Dokument ist ein Entwurf und noch ke
 ## So geht ein Beitrag
 
 1. Issue oder kurze Nachricht an nevula.support@proton.me, bevor eine große Änderung beginnt.
-2. Kleine, nachvollziehbare Änderungen. Keine Zahlungs-, NevPay- oder Play-Signing-Teile.
+2. Kleine, nachvollziehbare Änderungen. Keine Zahlungs- oder Play-Signing-Teile.
 3. `npm test` und `npm run typecheck` müssen bestehen.
 4. Keine Geheimnisse: keine `.env`, keine Keystores, keine Dienstkonten, keine echten Zugangscodes, keine personenbezogenen Testdaten.
 5. Pull Request gegen das öffentliche Repository, sobald es existiert. Bis dahin nichts einreichen.

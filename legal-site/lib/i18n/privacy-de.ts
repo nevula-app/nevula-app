@@ -367,7 +367,7 @@ export const privacyDeSections: PrivacySection[] = [
     blocks: [
       {
         type: 'p',
-        text: 'Denny Almeida\n[Anschrift des Verantwortlichen]',
+        text: 'Denny Almeida\nRua das Violetas 11 – 2 Dto\n2870-296 Montijo, Portugal',
       },
     ],
   },

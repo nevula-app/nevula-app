@@ -14,10 +14,11 @@ import {
   LockKeyhole,
   MessagesSquare,
 } from 'lucide-react';
-import { BrandHeadliner, SiteShell } from '@/components/site-shell';
+import Image from 'next/image';
+import { SiteShell } from '@/components/site-shell';
 import { useI18n } from '@/components/i18n-provider';
 
-const PLAY_STORE_PUBLIC = false;
+const PLAY_STORE_PUBLIC = true;
 const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.nevula.app';
 
 function GooglePlayMark() {
@@ -40,6 +41,24 @@ function GooglePlayMark() {
         d="M4.3.6 23.5 13.3 18.7 18 1.8 1.4A4 4 0 0 1 4.3.6Z"
       />
     </svg>
+  );
+}
+
+function StoreIconLink({ label }: { label: string }) {
+  const icon = (
+    <Image src="/nevula-store-icon.png" alt="" width={112} height={112} unoptimized />
+  );
+  if (!PLAY_STORE_PUBLIC) {
+    return (
+      <span className="storeIconLink" aria-label={label}>
+        {icon}
+      </span>
+    );
+  }
+  return (
+    <a className="storeIconLink" href={playStoreUrl} target="_blank" rel="noreferrer" aria-label={label}>
+      {icon}
+    </a>
   );
 }
 
@@ -81,6 +100,21 @@ function TrustWithPrivacyLink({ text }: { text: string }) {
   );
 }
 
+function OpenSourceWithGitHubLink({ text }: { text: string }) {
+  const marker = 'GitHub';
+  const idx = text.lastIndexOf(marker);
+  if (idx === -1) return <>{text}</>;
+  return (
+    <>
+      {text.slice(0, idx)}
+      <a href="https://github.com/nevula-app/nevula-app" target="_blank" rel="noreferrer">
+        {marker}
+      </a>
+      {text.slice(idx + marker.length)}
+    </>
+  );
+}
+
 export default function HomePage() {
   const { t, locale } = useI18n();
   const features = [
@@ -93,10 +127,19 @@ export default function HomePage() {
   return (
     <SiteShell>
       <div lang={locale}>
-        <BrandHeadliner priority>
-          <p className="heroTagline">{t.home.heroTitle}</p>
-          <p className="heroSub">{t.home.heroSub}</p>
-          <p className="heroLead">{t.home.heroBody}</p>
+        <section className="productHero brandHero">
+          <h1 style={{ margin: 0, width: '100%', lineHeight: 0 }}>
+            <Image
+              src="/nevula-feature-graphic-1024x500.png"
+              alt="NEVULA — PRIVATE MESSENGER"
+              width={1024}
+              height={500}
+              priority
+              unoptimized
+              style={{ display: 'block', width: '100%', height: 'auto', objectFit: 'contain' }}
+            />
+          </h1>
+          <div className="productHeroContent">
           <div className="heroActions">
             <PlayCta
               className="miniPlayButton"
@@ -107,11 +150,15 @@ export default function HomePage() {
               {t.home.ctaPrivacy}
             </a>
           </div>
-        </BrandHeadliner>
+          </div>
+        </section>
 
         <section className="securityByDesign" aria-label={t.home.securityAria}>
           <h2>{t.home.securityTitle}</h2>
           <p>{t.home.securityBody}</p>
+          <p>
+            <OpenSourceWithGitHubLink text={t.home.securityOpenSource} />
+          </p>
         </section>
 
         <section className="featureGrid" aria-label={t.home.featuresAria}>
@@ -145,11 +192,14 @@ export default function HomePage() {
             <h2>{t.home.ctaTitle}</h2>
             <p>{t.home.ctaBody}</p>
           </div>
-          <PlayCta
-            className="playButton"
-            label={t.home.install}
-            soonAria={t.chrome.playSoonAria}
-          />
+          <div className="downloadActions">
+            <StoreIconLink label={t.home.ctaInstall} />
+            <PlayCta
+              className="playButton"
+              label={t.home.install}
+              soonAria={t.chrome.playSoonAria}
+            />
+          </div>
         </section>
 
         <nav className="homeFooterLinks" aria-label={t.chrome.morePagesAria}>

@@ -11,7 +11,7 @@ import ContributePageView from '@/components/contribute-page';
 
 export const metadata: Metadata = {
   title: 'Support NEVULA',
-  description: 'Support NEVULA development with a voluntary crypto donation.',
+  description: 'Support NEVULA development with a voluntary donation.',
 };
 
 export default function SupportContributePage() {

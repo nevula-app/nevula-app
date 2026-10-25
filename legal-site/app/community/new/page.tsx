@@ -10,7 +10,7 @@ import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { BrandCompound, BrandWord, SiteShell } from '@/components/site-shell';
 import { NewPostForm } from '@/components/community-actions';
-import { memberFromCookie } from '@/lib/community-db';
+import { isAdmin, memberFromCookie } from '@/lib/community-db';
 
 export const dynamic = 'force-dynamic';
 
@@ -21,10 +21,12 @@ export default async function NewPost({
 }) {
   const member = await memberFromCookie((await headers()).get('cookie'));
   if (!member) redirect('/community/login');
+  const admin = isAdmin(member);
   const requested = (await searchParams).category;
-  const category = ['bug', 'question', 'idea'].includes(requested ?? '')
-    ? requested
-    : 'question';
+  const allowed = admin
+    ? ['bug', 'question', 'idea', 'announcement']
+    : ['bug', 'question', 'idea'];
+  const category = allowed.includes(requested ?? '') ? requested : 'question';
   return (
     <SiteShell>
       <article className="document">
@@ -38,7 +40,7 @@ export default async function NewPost({
             Messenger-Aktivitäten werden nicht angezeigt.
           </p>
         </header>
-        <NewPostForm nickname={member.nickname} category={category} />
+        <NewPostForm nickname={member.nickname} category={category} isAdmin={admin} />
       </article>
     </SiteShell>
   );

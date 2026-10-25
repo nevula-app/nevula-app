@@ -36,15 +36,22 @@ export const metadata: Metadata = {
     'Private Android space: chats, notes, calendar and gallery. Optionally disguised as a calculator — without email, without phone number.',
   icons: {
     icon: [
-      { url: '/favicon.png', type: 'image/png' },
-      { url: '/nevula-icon.png', type: 'image/png', sizes: '192x192' },
+      { url: '/nevula-app-icon.png', type: 'image/png' },
+      { url: '/nevula-app-icon.png', type: 'image/png', sizes: '192x192' },
     ],
-    apple: [{ url: '/nevula-icon.png', sizes: '192x192' }],
+    apple: [{ url: '/nevula-app-icon.png', sizes: '192x192' }],
   },
   openGraph: {
     title: 'NEVULA · Private Android space',
     description: 'Private Android space — without email, without phone number.',
-    images: [{ url: '/nevula-wortmark-nebel.png', width: 2820, height: 748, alt: 'NEVULA' }],
+    images: [
+      {
+        url: '/nevula-feature-graphic-1024x500.png',
+        width: 1024,
+        height: 500,
+        alt: 'NEVULA — PRIVATE MESSENGER',
+      },
+    ],
   },
 };
 

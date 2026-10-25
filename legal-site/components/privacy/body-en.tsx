@@ -384,7 +384,9 @@ export function PrivacyBodyEn({
         <p>
           Denny Almeida
           <br />
-          [Anschrift des Verantwortlichen]
+          Rua das Violetas 11 – 2 Dto
+          <br />
+          2870-296 Montijo, Portugal
         </p>
       </section>
     </>

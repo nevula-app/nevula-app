@@ -9,6 +9,7 @@
 import { env } from 'cloudflare:workers';
 
 export type Member = { user_id:string; nickname:string; role:'member'|'moderator'|'admin'; suspended_at:string|null };
+export type PostStatus = 'published' | 'draft';
 export async function db() {
   return (env as unknown as {DB:D1Database}).DB;
 }
@@ -17,6 +18,11 @@ export async function sha256(value:string) {
   return [...new Uint8Array(bytes)].map(value=>value.toString(16).padStart(2,'0')).join('');
 }
 export function randomToken(){return crypto.randomUUID().replaceAll('-','')+crypto.randomUUID().replaceAll('-','');}
+export function isAdmin(member:Member|null|undefined){return member?.role==='admin';}
+export function canViewDraft(member:Member|null|undefined,previewToken:string|null|undefined,previewQuery:string|null|undefined){
+  if(isAdmin(member))return true;
+  return Boolean(previewToken&&previewQuery&&previewToken===previewQuery);
+}
 export async function memberFromCookie(cookieHeader:string|null):Promise<Member|null>{
   const token=cookieHeader?.match(/(?:^|;\s*)nevula_community=([^;]+)/)?.[1]; if(!token)return null;
   const database=await db(); const hash=await sha256(token);

@@ -31,7 +31,11 @@ class Statement {
 }
 beforeEach(() => {
   sqlite = new DatabaseSync(':memory:');
-  for (const filename of ['0000_community.sql', '0001_community_credentials.sql'])
+  for (const filename of [
+    '0000_community.sql',
+    '0001_community_credentials.sql',
+    '0002_community_pins_drafts.sql',
+  ])
     sqlite.exec(readFileSync(new URL('../drizzle/' + filename, import.meta.url), 'utf8'));
   env.DB = {
     prepare: (sql: string) => new Statement(sql),

@@ -65,6 +65,7 @@ export type Messages = {
     trust: string;
     securityTitle: string;
     securityBody: string;
+    securityOpenSource: string;
     securityAria: string;
     contributeTitle: string;
     contributeBody: string;
@@ -87,6 +88,9 @@ export type Messages = {
     catBugs: string;
     catQuestions: string;
     catIdeas: string;
+    catAnnouncement: string;
+    pinned: string;
+    draft: string;
     rulesLink: string;
     newPost: string;
     access: string;
@@ -109,6 +113,10 @@ export type Messages = {
     catIdeaCopy: string;
     catIdeaCta: string;
     footerAria: string;
+    loginToReply: string;
+    discussionLocked: string;
+    draftNoReplies: string;
+    notPublicYet: string;
   };
   login: {
     title: string;
@@ -155,7 +163,9 @@ export type Messages = {
     p4: string;
     cryptoTitle: string;
     cryptoLead: string;
+    xmrTitle: string;
     btcTitle: string;
+    xmrQrAlt: string;
     btcQrAlt: string;
     copyAddress: string;
     copied: string;

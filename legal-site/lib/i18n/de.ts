@@ -45,7 +45,7 @@ export const de: Messages = {
     ctaPrivacy: 'Datenschutz lesen →',
     b1Title: 'Private Nachrichten',
     b1Body:
-      'Chats sind mit NVL3 Ende-zu-Ende verschlüsselt — auf dem Gerät, bevor sie das Telefon verlassen. Der Server sieht keinen Klartext. Burning (max. 28 Tage). Optional Tor pro Chat. Pairing von Angesicht zu Angesicht.\n\nZusätzlich — Post-Quantum-Schutz: NVL3 härtet den Schlüsselaustausch gegen Angriffe im Quantenzeitalter. Das zielt auf Harvest Now, Decrypt Later: Selbst wenn Chiffretext heute gestohlen und später mit Quantencomputern angegriffen wird, soll er unlesbar bleiben. E2EE bleibt; Post-Quantum ist der zusätzliche Schild.',
+      'Chats sind mit NVL3 Ende-zu-Ende verschlüsselt — inkl. Post-Quantum-Schutz. Der Server sieht keinen Klartext. Burning (max. 28 Tage). Optional Tor pro Chat. Pairing von Angesicht zu Angesicht per QR oder per Einladungslink.',
     b2Title: 'Tarnung & Zugang',
     b2Body:
       'Icon als NEVULA oder Hidden Mode („Calculator“). Zugang hinter dem Taschenrechner-Gate mit Entriegelungs-PIN und getrenntem Zerstörungscode — beides nur auf dem Gerät.',
@@ -60,6 +60,8 @@ export const de: Messages = {
     securityTitle: 'Sicherheit von Anfang an',
     securityBody:
       'NEVULA wurde mit dem Anspruch entwickelt, private Kommunikation und persönliche Daten auf dem Smartphone nach hohen Sicherheits- und Datenschutzstandards zu schützen. Bei der Konzeption wurden bekannte Angriffsszenarien und reale Sicherheitsvorfälle moderner Kommunikationssysteme analysiert, um daraus zusätzliche Schutzmechanismen für NEVULA abzuleiten.',
+    securityOpenSource:
+      'NEVULA ist Open Source (AGPL-3.0). Jeder kann den Code auf GitHub einsehen.',
     securityAria: 'Sicherheit von Anfang an',
     contributeTitle: 'Unterstütze NEVULA',
     contributeBody:
@@ -85,6 +87,9 @@ export const de: Messages = {
     catBugs: 'Bugs & Fehler',
     catQuestions: 'Community-Fragen',
     catIdeas: 'Ideen',
+    catAnnouncement: 'Announcement',
+    pinned: 'Pinned',
+    draft: 'Entwurf',
     rulesLink: 'Community-Regeln',
     newPost: 'Eigenen Beitrag erstellen',
     access: 'Community-Zugang',
@@ -111,6 +116,10 @@ export const de: Messages = {
     catIdeaCopy: 'Hier könnt ihr Ideen und Wünsche für neue Funktionen teilen.',
     catIdeaCta: 'Vorschlag machen →',
     footerAria: 'Community-Links',
+    loginToReply: 'Melde dich an, um zu antworten.',
+    discussionLocked: 'Diese Diskussion ist gesperrt.',
+    draftNoReplies: 'Entwürfe können noch keine öffentlichen Antworten erhalten.',
+    notPublicYet: 'Diese Diskussion ist noch nicht öffentlich.',
   },
   login: {
     title: 'Willkommen zurück.',
@@ -175,9 +184,11 @@ export const de: Messages = {
     p2: 'Wenn du NEVULA und die weitere Entwicklung unterstützen möchtest, kannst du dies freiwillig mit einer Spende tun.',
     p3: 'Spenden helfen uns dabei, die Infrastruktur zu betreiben, Sicherheitsfunktionen weiterzuentwickeln, unabhängige Sicherheitsprüfungen zu finanzieren und NEVULA langfristig zu verbessern.',
     p4: 'Eine Spende ist selbstverständlich freiwillig und hat keinen Einfluss auf die Funktionen oder den Schutz, den du als NEVULA-Nutzer erhältst.',
-    cryptoTitle: 'Spenden mit Kryptowährungen',
+    cryptoTitle: 'Spenden mit Bitcoin oder Monero',
     cryptoLead: 'Wir akzeptieren derzeit:',
+    xmrTitle: 'Monero (XMR)',
     btcTitle: 'Bitcoin (BTC)',
+    xmrQrAlt: 'QR-Code für die Monero-Spendenadresse',
     btcQrAlt: 'QR-Code für die Bitcoin-Spendenadresse',
     copyAddress: 'Adresse kopieren',
     copied: 'Kopiert',
@@ -262,7 +273,7 @@ export const de: Messages = {
     contactTitle: 'Kontakt',
     email: 'E-Mail: nevula.support@proton.me',
     operatorTitle: 'Betreiber',
-    operator: 'Denny Almeida\n[Anschrift des Verantwortlichen]',
+    operator: 'Denny Almeida\nRua das Violetas 11 – 2 Dto\n2870-296 Montijo, Portugal',
   },
   privacy: {
     kicker: 'RECHTLICHES',

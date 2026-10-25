@@ -6,46 +6,30 @@
 // it under the terms of the GNU Affero General Public License as published by
 // the Free Software Foundation, version 3.
 
-import { sites } from '@openai/sites-vite-plugin';
 import tailwindcss from '@tailwindcss/postcss';
 import { cloudflare } from '@cloudflare/vite-plugin';
 import vinext from 'vinext';
-import { defineConfig } from 'vite';
-import hostingConfig from './.openai/hosting.json';
+import { defineConfig, loadEnv } from 'vite';
 
-/** Production D1 on Denny's Cloudflare account (nevula-site-d1). */
-const NEVULA_SITE_D1_DATABASE_ID = 'd67c6c50-37b3-4d45-ad8b-c1414abe5c7b';
-
-const { d1, r2 } = hostingConfig;
-
-// macOS Seatbelt blocks FSEvents, so Codex previews need polling for HMR.
 const isCodexSeatbeltSandbox = process.env.CODEX_SANDBOX === 'seatbelt';
 
-const localBindingConfig = {
-  name: 'nevula-de',
-  main: 'vinext/server/fetch-handler',
-  d1_databases: d1
-    ? [
-        {
-          binding: d1,
-          database_name: 'nevula-site-d1',
-          database_id: NEVULA_SITE_D1_DATABASE_ID,
-        },
-      ]
-    : [],
-  r2_buckets: r2
-    ? [
-        {
-          binding: r2,
-          bucket_name: 'site-creator-r2',
-        },
-      ]
-    : [],
-};
+export default defineConfig(({ mode }) => {
+  // See the root .env.example; local website settings belong in legal-site/.env.local.
+  const settings = { ...loadEnv(mode, process.cwd(), ''), ...process.env };
+  const localBindingConfig = {
+    name: settings.NEVULA_SITE_WORKER_NAME || 'community-site',
+    main: 'vinext/server/fetch-handler',
+    d1_databases: [{
+      binding: 'DB',
+      database_name: settings.NEVULA_SITE_D1_DATABASE_NAME || 'community-db',
+      // A placeholder for local development, never the production database ID.
+      database_id: settings.NEVULA_SITE_D1_DATABASE_ID || '00000000-0000-0000-0000-000000000000',
+    }],
+    r2_buckets: settings.NEVULA_SITE_R2_BUCKET_NAME
+      ? [{ binding: 'R2', bucket_name: settings.NEVULA_SITE_R2_BUCKET_NAME }]
+      : [],
+  };
 
-export default defineConfig(() => {
-  // Keep Wrangler and Miniflare state project-local. These are non-secret tool
-  // settings; application environment belongs in ignored `.env*` files.
   process.env.WRANGLER_WRITE_LOGS ??= 'false';
   process.env.WRANGLER_LOG_PATH ??= '.wrangler/logs';
   process.env.MINIFLARE_REGISTRY_PATH ??= '.wrangler/registry';
@@ -57,7 +41,6 @@ export default defineConfig(() => {
       : undefined,
     plugins: [
       vinext(),
-      sites(),
       cloudflare({
         viteEnvironment: { name: 'rsc', childEnvironments: ['ssr'] },
         config: localBindingConfig,

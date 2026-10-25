@@ -148,7 +148,7 @@ export function CommunityLogout() {
 
   return (
     <>
-      <button className="secondaryLink" onClick={logout} disabled={busy}>
+      <button className="secondaryLink btnSecondary" onClick={logout} disabled={busy}>
         {busy ? t.auth.loggingOut : t.auth.logout}
       </button>
       {error && <p role="alert">{error}</p>}

@@ -12,7 +12,12 @@ import Image from 'next/image';
 import { DocumentPage } from '@/components/site-shell';
 import { CopyAddressButton } from '@/components/copy-address-button';
 import { useI18n } from '@/components/i18n-provider';
-import { DONATE_BTC, DONATE_BTC_QR } from '@/lib/donate';
+import {
+  DONATE_BTC,
+  DONATE_BTC_QR,
+  DONATE_XMR,
+  DONATE_XMR_QR,
+} from '@/lib/donate';
 
 function CryptoBlock({
   title,
@@ -52,6 +57,12 @@ export default function ContributePageView() {
         <h2>{t.contribute.cryptoTitle}</h2>
         <p>{t.contribute.cryptoLead}</p>
         <div className="donateCryptoGrid">
+          <CryptoBlock
+            title={t.contribute.xmrTitle}
+            address={DONATE_XMR}
+            qrSrc={DONATE_XMR_QR}
+            qrAlt={t.contribute.xmrQrAlt}
+          />
           <CryptoBlock
             title={t.contribute.btcTitle}
             address={DONATE_BTC}
