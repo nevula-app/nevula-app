@@ -1,4 +1,4 @@
-// NevNote v1. No network request until the reader explicitly chooses Reveal.
+// NevNote v1. No network request until the reader explicitly chooses Open.
 const fields = ['v', 'id', 'key', 'readToken', 'expiresAt', 'mode', 'durationSeconds'];
 const secret = value => typeof value === 'string' && /^[0-9a-f]{64}$/.test(value);
 const bytes = hex => Uint8Array.from(hex.match(/../g), pair => parseInt(pair, 16));
@@ -34,7 +34,7 @@ export function createReader(ref, endpoint, publicKey, { fetcher = globalThis.fe
   return {
     state: () => state,
     destroy,
-    async reveal() {
+    async open() {
       if (state !== 'ready') return;
       if (Date.parse(reference.expiresAt) <= now()) { state = 'unavailable'; reference = null; render({ state, ...unavailable }); return; }
       state = 'opening'; render({ state, title: 'Opening…', hint: 'Please wait.' });
@@ -79,7 +79,7 @@ export function mountReader(doc = document, win = window) {
   const key = doc.querySelector('meta[name="nevnote-public-key"]').content;
   if (!endpoint || !win.isSecureContext || !win.crypto?.subtle) { reference = null; render({ title: 'NevNote is unavailable', hint: 'This browser or service is not ready. Please try again later.' }); return; }
   const controller = createReader(reference, endpoint, key, { render }); reference = null;
-  const reveal = doc.getElementById('reveal'); reveal.disabled = false; reveal.onclick = () => { void controller.reveal(); };
+  const open = doc.getElementById('open'); open.disabled = false; open.onclick = () => { void controller.open(); };
   doc.addEventListener('visibilitychange', () => { if (doc.hidden) controller.destroy(); });
   win.addEventListener('pagehide', () => controller.destroy());
   win.addEventListener('pageshow', event => { if (event.persisted) controller.destroy(); });
