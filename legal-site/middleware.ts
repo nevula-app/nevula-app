@@ -20,6 +20,7 @@ function fromAcceptLanguage(header: string | null): Locale {
 }
 
 export function middleware(request: NextRequest) {
+  if (request.nextUrl.pathname === '/NevNote' || request.nextUrl.pathname.startsWith('/NevNote/')) return NextResponse.next();
   const urlLang = request.nextUrl.searchParams.get('lang');
   const cookieLang = request.cookies.get(COOKIE)?.value;
   let locale: Locale | null = isLocale(urlLang) ? urlLang : null;
