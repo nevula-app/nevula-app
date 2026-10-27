@@ -45,7 +45,7 @@ export const de: Messages = {
     ctaPrivacy: 'Datenschutz lesen →',
     b1Title: 'Private Nachrichten',
     b1Body:
-      'Chats sind mit NVL3 Ende-zu-Ende verschlüsselt — inkl. Post-Quantum-Schutz. Der Server sieht keinen Klartext. Burning (max. 28 Tage). Optional Tor pro Chat. Pairing von Angesicht zu Angesicht per QR oder per Einladungslink.',
+      'Chats sind mit NVL3 Ende-zu-Ende verschlüsselt — inkl. Post-Quantum-Schutz. Der Server sieht keinen Klartext. Burning (max. 28 Tage). Optional Tor pro Chat. Verbinde dich persönlich per QR-Code oder Einladungslink.',
     b2Title: 'Tarnung & Zugang',
     b2Body:
       'Icon als NEVULA oder Hidden Mode („Calculator“). Zugang hinter dem Taschenrechner-Gate mit Entriegelungs-PIN und getrenntem Zerstörungscode — beides nur auf dem Gerät.',
